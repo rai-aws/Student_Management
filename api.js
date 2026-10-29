@@ -32,8 +32,7 @@ export function getStudentsAPI() {
     return mockStudentDb;
 }
 
-console.log("Test case 1");
-console.log(getStudentsAPI());
+console.log("Initial DB State: ",getStudentsAPI());
 console.log("\n");
 
 /**
@@ -55,15 +54,11 @@ export function addStudentAPI(newStudentData) {
     return student;
 }
 
-const bago = addStudentAPI({
+const addNewStudent = addStudentAPI({
     firstName: "Kurt",
     lastName: "San",
     email: "kurtsan@gmail.com"
 });
 
-console.log("Test case 2");
-console.log(bago);
-console.log("\n");
-
-console.log("Test case 3");
-console.log(getStudentsAPI());
+console.log("Returned Saved Object: ",addNewStudent);
+console.log("Updated DB State: ",getStudentsAPI());
