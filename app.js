@@ -1,14 +1,22 @@
+
 import { getStudentsAPI, addStudentAPI } from "./api.js";
 
-// Fields
+// Stores the student records.
 let localStudents = [];
+
+// Gets the form and table body elements.
 const studentForm = document.getElementById("studentForm");
 const studentTableBody = document.getElementById("studentTableBody");
 
-// Render the table
+/**
+ * Displays student records in the table.
+ * @param {Array} dataArray - The list of students.
+ */
 const renderTable = (dataArray) => {
+    // Clear the existing table rows.
     studentTableBody.innerHTML = "";
 
+    // Show a message if no records exist.
     if (dataArray.length === 0) {
         studentTableBody.innerHTML = `
             <tr>
@@ -17,6 +25,7 @@ const renderTable = (dataArray) => {
         return;
     }
 
+    // Create a row for each student.
     dataArray.forEach((student, index) => {
         const row = document.createElement("tr");
         row.innerHTML = `
@@ -28,34 +37,38 @@ const renderTable = (dataArray) => {
     });
 };
 
-// Handle form submission
+// Handles form submission.
 studentForm.addEventListener("submit", (event) => {
-    event.preventDefault(); // stop the page from reloading
+    event.preventDefault(); // Prevent page reload.
 
+    // Get the input values.
     const studentData = {
         firstName: document.getElementById("firstName").value.trim(),
         lastName: document.getElementById("lastName").value.trim(),
         email: document.getElementById("email").value.trim()
     };
 
+    // Check if all fields are filled.
     if (!studentData.firstName || !studentData.lastName || !studentData.email) {
         alert("All input fields must be filled out.");
         return;
     }
 
+    // Add the student and update the table.
     addStudentAPI(studentData);
-    localStudents = getStudentsAPI(); // re-fetch so localStudents includes the new record
+    localStudents = getStudentsAPI();
     renderTable(localStudents);
 
-    studentForm.reset(); // clear all fields
+    studentForm.reset(); // Clear the form fields.
 });
 
-// Start the app
+/**
+ * Loads and displays the student records.
+ */
 const initApp = () => {
     localStudents = getStudentsAPI();
     renderTable(localStudents);
 };
 
-
-
+// Initialize the application.
 initApp();

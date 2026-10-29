@@ -1,4 +1,3 @@
-
 /**
  * Counter used to avoid duplicate IDs for the initial students
  * created within the same millisecond.
@@ -10,18 +9,18 @@ let addOne = 0;
  * Date.now() generates a timestamp in milliseconds.
  */
 let mockStudentDb = [
-    // {
-    //     id: Date.now() + addOne++,
-    //     firstName: "Ry",
-    //     lastName: "Lee",
-    //     email: "rylee@gmail.com"
-    // },
-    // {
-    //     id: Date.now() + addOne++,
-    //     firstName: "Migs",
-    //     lastName: "San",
-    //     email: "Migssan@gmail.com"
-    // }
+    {
+        id: Date.now() + addOne++,
+        firstName: "Ry",
+        lastName: "Lee",
+        email: "rylee@gmail.com"
+    },
+    {
+        id: Date.now() + addOne++,
+        firstName: "Migs",
+        lastName: "San",
+        email: "Migssan@gmail.com"
+    }
 ];
 
 /**
@@ -30,8 +29,15 @@ let mockStudentDb = [
  * @returns {Array<Object>} The list of students.
  */
 export function getStudentsAPI() {
-    return [...mockStudentDb]
+    return mockStudentDb;
 }
+
+// Exercise 1 test case 1 (not needed in Exercise 2)
+/*
+console.log("Test case 1");
+console.log(getStudentsAPI());
+console.log("\n");
+*/
 
 /**
  * Creates a new student record using the current timestamp,
@@ -51,3 +57,19 @@ export function addStudentAPI(newStudentData) {
 
     return student;
 }
+
+// Exercise 1 test cases 2 and 3 (not needed in Exercise 2)
+/*
+const bago = addStudentAPI({
+    firstName: "Kurt",
+    lastName: "San",
+    email: "kurtsan@gmail.com"
+});
+
+console.log("Test case 2");
+console.log(bago);
+console.log("\n");
+
+console.log("Test case 3");
+console.log(getStudentsAPI());
+*/
