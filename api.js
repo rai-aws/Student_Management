@@ -1,9 +1,8 @@
-
 /**
  * Counter used to avoid duplicate IDs for the initial students
  * created within the same millisecond.
  */
-let addOne = 0;
+let add = 0;
 
 /**
  * Mock student database containing the initial student records.
@@ -11,13 +10,13 @@ let addOne = 0;
  */
 let mockStudentDb = [
     {
-        id: Date.now() + addOne++,
+        id: Date.now() + add++,
         firstName: "Ry",
         lastName: "Lee",
         email: "rylee@gmail.com"
     },
     {
-        id: Date.now() + addOne++,
+        id: Date.now() + add++,
         firstName: "Migs",
         lastName: "San",
         email: "Migssan@gmail.com"
@@ -29,12 +28,11 @@ let mockStudentDb = [
  *
  * @returns {Array<Object>} The list of students.
  */
-function getStudentsAPI() {
+export function getStudentsAPI() {
     return mockStudentDb;
 }
 
-console.log("Test case 1");
-console.log(getStudentsAPI());
+console.log("Initial DB State: ",getStudentsAPI());
 console.log("\n");
 
 /**
@@ -44,9 +42,9 @@ console.log("\n");
  * @param {Object} newStudentData - The student's information.
  * @returns {Object} The newly created student record.
  */
-function addStudentAPI(newStudentData) {
+export function addStudentAPI(newStudentData) {
     const student = {
-        id: Date.now() + 1,
+        id: Date.now() + add++,
         ...newStudentData
     };
 
@@ -56,15 +54,11 @@ function addStudentAPI(newStudentData) {
     return student;
 }
 
-const bago = addStudentAPI({
+const addNewStudent = addStudentAPI({
     firstName: "Kurt",
     lastName: "San",
     email: "kurtsan@gmail.com"
 });
 
-console.log("Test case 2");
-console.log(bago);
-console.log("\n");
-
-console.log("Test case 3");
-console.log(getStudentsAPI());
+console.log("Returned Saved Object: ",addNewStudent);
+console.log("Updated DB State: ",getStudentsAPI());
