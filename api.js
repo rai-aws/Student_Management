@@ -10,18 +10,18 @@ let addOne = 0;
  * Date.now() generates a timestamp in milliseconds.
  */
 let mockStudentDb = [
-    {
-        id: Date.now() + addOne++,
-        firstName: "Ry",
-        lastName: "Lee",
-        email: "rylee@gmail.com"
-    },
-    {
-        id: Date.now() + addOne++,
-        firstName: "Migs",
-        lastName: "San",
-        email: "Migssan@gmail.com"
-    }
+    // {
+    //     id: Date.now() + addOne++,
+    //     firstName: "Ry",
+    //     lastName: "Lee",
+    //     email: "rylee@gmail.com"
+    // },
+    // {
+    //     id: Date.now() + addOne++,
+    //     firstName: "Migs",
+    //     lastName: "San",
+    //     email: "Migssan@gmail.com"
+    // }
 ];
 
 /**
@@ -29,13 +29,9 @@ let mockStudentDb = [
  *
  * @returns {Array<Object>} The list of students.
  */
-function getStudentsAPI() {
-    return mockStudentDb;
+export function getStudentsAPI() {
+    return [...mockStudentDb]
 }
-
-console.log("Test case 1");
-console.log(getStudentsAPI());
-console.log("\n");
 
 /**
  * Creates a new student record using the current timestamp,
@@ -44,7 +40,7 @@ console.log("\n");
  * @param {Object} newStudentData - The student's information.
  * @returns {Object} The newly created student record.
  */
-function addStudentAPI(newStudentData) {
+export function addStudentAPI(newStudentData) {
     const student = {
         id: Date.now() + 1,
         ...newStudentData
@@ -55,16 +51,3 @@ function addStudentAPI(newStudentData) {
 
     return student;
 }
-
-const bago = addStudentAPI({
-    firstName: "Kurt",
-    lastName: "San",
-    email: "kurtsan@gmail.com"
-});
-
-console.log("Test case 2");
-console.log(bago);
-console.log("\n");
-
-console.log("Test case 3");
-console.log(getStudentsAPI());
