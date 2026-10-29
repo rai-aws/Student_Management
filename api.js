@@ -32,12 +32,9 @@ export function getStudentsAPI() {
     return mockStudentDb;
 }
 
-// Exercise 1 test case 1 (not needed in Exercise 2)
-/*
-console.log("Test case 1");
-console.log(getStudentsAPI());
-console.log("\n");
-*/
+// console.log("Test case 1");
+// console.log(getStudentsAPI());
+// console.log("\n");
 
 /**
  * Creates a new student record using the current timestamp,
@@ -58,18 +55,15 @@ export function addStudentAPI(newStudentData) {
     return student;
 }
 
-// Exercise 1 test cases 2 and 3 (not needed in Exercise 2)
-/*
-const bago = addStudentAPI({
-    firstName: "Kurt",
-    lastName: "San",
-    email: "kurtsan@gmail.com"
-});
+// const bago = addStudentAPI({
+//     firstName: "Kurt",
+//     lastName: "San",
+//     email: "kurtsan@gmail.com"
+// });
 
-console.log("Test case 2");
-console.log(bago);
-console.log("\n");
+// console.log("Test case 2");
+// console.log(bago);
+// console.log("\n");
 
-console.log("Test case 3");
-console.log(getStudentsAPI());
-*/
+// console.log("Test case 3");
+// console.log(getStudentsAPI());
